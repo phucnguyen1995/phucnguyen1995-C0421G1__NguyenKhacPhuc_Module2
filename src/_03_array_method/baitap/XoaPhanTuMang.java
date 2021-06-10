@@ -22,16 +22,18 @@ public class XoaPhanTuMang {
         input = scanner.nextInt();
         boolean check = false;
         for (int i = 0; i < arr.length; i++) {
-            if (input == arr[i]) {
-                check=true;
-                System.out.println(" ở vị trí thứ " + i);
-                for (int j = i; j < arr.length - 1; j++) {
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = 0;
+            while (true) {
+                if (arr[i] == input) {
+                    check = true;
+                    arr[i]=0;
+                    for (int j = i; j < arr.length - 1; j++) {
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = 0;
+                    }
+                } else {
+                    break;
                 }
-
             }
-
         }
         if (check == false) {
             System.out.println("khong ton tai gia tri da nhap trong mang");
@@ -44,3 +46,5 @@ public class XoaPhanTuMang {
     }
 
 }
+
+
