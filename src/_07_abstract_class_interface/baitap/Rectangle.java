@@ -1,4 +1,4 @@
-package _7_abstract_class_interface.baitap;
+package _07_abstract_class_interface.baitap;
 
 public class Rectangle extends Shape implements Resizeable {
     private double width = 1.0;

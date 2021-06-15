@@ -1,6 +1,4 @@
-package _7_abstract_class_interface.baitap;
-
-import _06_ke_thua.thuchanh.Rectangle;
+package _07_abstract_class_interface.baitap;
 
 public class Square extends Shape implements Resizeable {
     private double side;

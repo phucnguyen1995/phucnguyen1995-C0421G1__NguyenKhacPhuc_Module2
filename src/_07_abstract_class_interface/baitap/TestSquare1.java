@@ -1,11 +1,11 @@
-package _7_abstract_class_interface.baitap;
+package _07_abstract_class_interface.baitap;
 
 public class TestSquare1 {
     public static void main(String[] args) {
         Shape shape = new Square1(4);
 //        cách 1 bị lỗi khi ko khai báo constructor hoặc khai
 //        báo mà có void,xóa void đi hoặc khởi tạo thêm
-
+//        ((Square1) shape)= new Square1(4);khai bao như vậy dc ko?/??
 //      c2:  ((Square1) shape).setSide(4);
         System.out.println("dien thich la " + ((Square1) shape).getArea());
 

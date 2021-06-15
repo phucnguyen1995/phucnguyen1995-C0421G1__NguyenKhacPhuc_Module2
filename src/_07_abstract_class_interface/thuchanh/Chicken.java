@@ -1,4 +1,4 @@
-package _7_abstract_class_interface.thuchanh;
+package _07_abstract_class_interface.thuchanh;
 
 public class Chicken extends Animal implements Edible {
     @Override

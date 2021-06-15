@@ -1,6 +1,6 @@
 package _08_clean_code_refactoring.thuchanh;
 
-//public class Calculator {
+public class Calculator {
 //    public static int calculate(int a, int b, char o) {
 //        switch (o) {
 //            case '+':
@@ -18,6 +18,8 @@ package _08_clean_code_refactoring.thuchanh;
 //                throw new RuntimeException("Unsupported operation");
 //        }
 //    }
+
+
 
 //    public static int calculate(int firstOperand, int secondOperand, char operator) {
 //        switch (operator) {
@@ -41,30 +43,31 @@ package _08_clean_code_refactoring.thuchanh;
 //    }
 //}
 
-//    Biến a: firstOperand - toán hạng đầu tiên
-//        Biến b: secondOperand - toán hạng thứ hai
-//        Biến o: operator - toán tử
+// note:   Biến a: firstOperand - toán hạng đầu tiên
+//         Biến b: secondOperand - toán hạng thứ hai
+//         Biến o: operator - toán tử
 
-//
-//public static final char ADDITION = '+';
-//public static final char SUBTRACTION = '-';
-//public static final char MULTIPLICATION = '*';
-//public static final char DIVISION = '/';
 
-public static int calculate(int firstOperand, int secondOperand, char operator) {
+    public static final char ADDITION = '+';
+    public static final char SUBTRACTION = '-';
+    public static final char MULTIPLICATION = '*';
+    public static final char DIVISION = '/';
+
+    public static int calculate(int firstOperand, int secondOperand, char operator) {
         switch (operator) {
-        case ADDITION:
-        return firstOperand + secondOperand;
-        case SUBTRACTION:
-        return firstOperand - secondOperand;
-        case MULTIPLICATION:
-        return firstOperand * secondOperand;
-        case DIVISION:
-        if (secondOperand != 0)
-        return firstOperand / secondOperand;
-        else
-        throw new RuntimeException("Can not divide by 0");
-default:
-        throw new RuntimeException("Unsupported operation");
+            case ADDITION:
+                return firstOperand + secondOperand;
+            case SUBTRACTION:
+                return firstOperand - secondOperand;
+            case MULTIPLICATION:
+                return firstOperand * secondOperand;
+            case DIVISION:
+                if (secondOperand != 0)
+                    return firstOperand / secondOperand;
+                else
+                    throw new RuntimeException("Can not divide by 0");
+            default:
+                throw new RuntimeException("Unsupported operation");
         }
-        }
+    }
+}

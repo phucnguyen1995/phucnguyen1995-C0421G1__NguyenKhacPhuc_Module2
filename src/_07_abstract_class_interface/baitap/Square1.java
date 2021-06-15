@@ -1,4 +1,4 @@
-package _7_abstract_class_interface.baitap;
+package _07_abstract_class_interface.baitap;
 
 public class Square1  extends Shape implements Colorable  {
    public double side;
