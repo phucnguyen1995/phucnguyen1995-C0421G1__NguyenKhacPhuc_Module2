@@ -1,4 +1,4 @@
-package _quanlysv;
+package _00_quanlysv;
 
 public class Person {
     protected int id;
