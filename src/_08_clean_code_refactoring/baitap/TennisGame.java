@@ -1,75 +1,88 @@
 package _08_clean_code_refactoring.baitap;
 
 public class TennisGame {
-    public static final int LOVE = 0;
-    public static final int FIFTEEN = 1;
-    public static final int THIRTY = 2;
-    public static final int FORTY = 3;
-
-    public static String getScore(String player1Name, String player2Name, int player1Score, int player2Score) {
-        String score = "";
-        int tempScore;
-        if (player1Score == player2Score) {
-            switch (player1Score) {
-                case LOVE:
-                    score = "Love-All";
-                    break;
-                case FIFTEEN:
-                    score = "Fifteen-All";
-                    break;
-                case THIRTY:
-                    score = "Thirty-All";
-                    break;
-                case FORTY:
-                    score = "Forty-All";
-                    break;
-                default:
-                    score = "Deuce";
-                    break;
-
-            }
-        } else if (player1Score >= 4 || player2Score >= 4) {
-            int minusResult = player1Score - player2Score;
-            boolean isAdvantageForPlayer1 = minusResult == 1;
-            if (isAdvantageForPlayer1) {
-                score = "Advantage for " + player1Name;
-            }
-            else {
-                boolean isAdvantageForPlayer2 = minusResult == -1;
-                if (isAdvantageForPlayer2) {
-                    score = "Advantage player2";
-                } else {
-                    boolean isWinForPlayer1 = minusResult >= 2;
-                    if (isWinForPlayer1) {
-                        score = "Win for " + player1Name;
-                    } else {
-                        score = "Win for " + player2Name;
-                    }
-                }
-            }
+    public static String getFinalScore(String player1Name, String player2Name, int player1Score, int player2Score) {
+        boolean isEqualScore = player1Score == player2Score;
+        boolean isAdvantage = player1Score >= 4 || player2Score >= 4;
+        if (isEqualScore) {
+            return getEqualScore(player1Score);
+        } else if (isAdvantage) {
+            return getAdvantage(player1Score, player2Score);
         } else {
-            for (int i = 1; i < 3; i++) {
-                if (i == 1) tempScore = player1Score;
-                else {
-                    score += "-";
-                    tempScore = player2Score;
-                }
-                switch (tempScore) {
-                    case LOVE:
-                        score += "Love";
-                        break;
-                    case FIFTEEN:
-                        score += "Fifteen";
-                        break;
-                    case THIRTY:
-                        score += "Thirty";
-                        break;
-                    case FORTY:
-                        score += "Forty";
-                        break;
-                }
-            }
+            return getDefault(player1Score, player2Score);
         }
-        return score;
+    }
+
+    public static String getEqualScore(int player1Score) {
+        String finalResult = "";
+        switch (player1Score) {
+            case 0:
+                finalResult = "Love-All";
+                break;
+            case 1:
+                finalResult = "Fifteen-All";
+                break;
+            case 2:
+                finalResult = "Thirty-All";
+                break;
+            case 3:
+                finalResult = "Forty-All";
+                break;
+            default:
+                finalResult = "Deuce";
+                break;
+
+        }
+        return finalResult;
+    }
+
+    public static String getAdvantage(int player1Score, int player2Score) {
+        String finalResult = "";
+        int differentScore = player1Score - player2Score;
+
+        if (differentScore == 1) {
+            finalResult = "Advantage player1";
+        } else if (differentScore == -1) {
+            finalResult = "Advantage player2";
+        } else if (differentScore >= 2) {
+            finalResult = "Win for player1";
+        } else {
+            finalResult = "Win for player2";
+        }
+        return finalResult;
+    }
+
+    public static String getDefault(int player1Score, int player2Score) {
+        String finalResult = "";
+        int tempScore = 0;
+        for (int i = 1; i < 3; i++) {
+            if (i == 1) {
+                tempScore = player1Score;
+            } else {
+                finalResult += "-";
+                tempScore = player2Score;
+            }
+            finalResult += checkTempScore(tempScore);
+        }
+        return finalResult;
+    }
+
+    public static String checkTempScore(int tempScore) {
+        String finalResult = "";
+        switch (tempScore) {
+            case 0:
+                finalResult += ("Love");
+                break;
+            case 1:
+                finalResult += ("Fifteen");
+                break;
+            case 2:
+                finalResult += ("Thirty");
+                break;
+            case 3:
+                finalResult += ("Forty");
+                break;
+        }
+        return finalResult;
     }
 }
