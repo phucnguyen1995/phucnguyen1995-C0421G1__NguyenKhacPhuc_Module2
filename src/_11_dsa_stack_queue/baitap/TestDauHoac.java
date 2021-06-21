@@ -14,6 +14,7 @@ public class TestDauHoac {
         Stack<Character> stack = new Stack<>();
         char left;
         for (int i = 0 ; i<str.length();i++) {
+//            duyệt chuỗi ta dùng charAt(i)
             left=str.charAt(i);
             if (left=='(') {
                 stack.push(left);

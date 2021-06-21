@@ -27,6 +27,7 @@ public class SuDungTreeMap {
                 if (!inputArr[i].isEmpty()) {
                     list.add(inputArr[i]);
                 }
+//                co nghia neu phan tu do khong phai la dau cach ta moi them vao
             }
         }
 
@@ -39,6 +40,7 @@ public class SuDungTreeMap {
         TreeMap<String, Integer> treeMap = new TreeMap<>();
         for (int i = 0; i < list.size(); i++) {
             if (treeMap.containsKey(list.get(i))) {
+//                trong if là tim tât ca nhung chữ trùng với nó trong list
                 int count = treeMap.get(list.get(i)) + 1;
                 treeMap.put(list.get(i), count);
             } else {
