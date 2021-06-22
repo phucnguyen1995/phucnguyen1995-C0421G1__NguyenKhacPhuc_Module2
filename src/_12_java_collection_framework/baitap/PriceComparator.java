@@ -7,6 +7,8 @@ public class PriceComparator implements Comparator<Product> {
     public int compare(Product o1, Product o2) {
         if (o1.getPrice()>o2.getPrice()) {
             return 1;
+//            ĐỂ SẮP XẾP THEO TĂNG DẦN ,NẾU MUỐN GIẢM DẦN TA CHỈ CẦN THAY DẤU
+//            LỚN THÀNH DẤU BÉ
         }else if (o1.getPrice()==o2.getPrice()) {
             return 0;
         }else {

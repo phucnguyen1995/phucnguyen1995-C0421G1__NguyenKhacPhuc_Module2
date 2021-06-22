@@ -81,10 +81,10 @@ public class ProductManagerArrayList {
         if (products.isEmpty()) {
             System.out.println("Sản phẩm đang trống");
         } else {
-            products.sort(Product::compareTo);
-            System.out.println("sắp xếp sản phẩm theo giá tiền tăng dần ");
-            for (Product productabc : products) {
-                System.out.println(productabc);
+            Comparator theoGia = new PriceComparator();
+            products.sort(theoGia);
+            for(Product product: products) {
+                System.out.println(product);
             }
         }
     }
@@ -155,9 +155,12 @@ public class ProductManagerArrayList {
         String nameTim = sc.nextLine();
 
         boolean check = false;
+//        chú ý: dòng 159
+        int index = 0;
         for (int i = 0; i < products.size(); i++) {
             if (nameTim.equals(products.get(i).getName())) {
-                products.get(i);
+                index=i;
+                products.get(index);
                 check = true;
                 break;
             }
