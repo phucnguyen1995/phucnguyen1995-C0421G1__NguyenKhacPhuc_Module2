@@ -47,6 +47,8 @@ public class Main {
 //        => hashset ko cho add giá trị trùng lặp còn hashmap thì dc
 //        nếu đề ko nói gì đến trùng lặp thì ta thấy làm theo kiểu hashset
 //        có vẻ như đơn giản và gọn hơn
+//        ngoài ko trùng lặp thì hashmap các ptử lưu dưới dạng entry, gồm 1
+//        key và 1 value
 
 
 
