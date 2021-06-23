@@ -1,5 +1,7 @@
 package _12_java_collection_framework.baitap;
 
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
+
 import java.util.*;
 
 public class ProductManagerArrayList {
@@ -83,7 +85,7 @@ public class ProductManagerArrayList {
         } else {
             Comparator theoGia = new PriceComparator();
             products.sort(theoGia);
-            for(Product product: products) {
+            for (Product product : products) {
                 System.out.println(product);
             }
         }
@@ -150,28 +152,48 @@ public class ProductManagerArrayList {
         }
     }
 
-    public static void  timSanPham(List<Product> products) {
+//    public static Product timSanPham(List<Product> products) {
+//        System.out.println("Nhập tên sản phẩm cần tìm");
+//        String nameTim = sc.nextLine();
+//
+//        boolean check = false;
+//        Product hienThi =new Product();
+//
+//        for (int i = 0; i < products.size(); i++) {
+//            if (nameTim.equals(products.get(i).getName())) {
+//                hienThi= products.get(i);
+//                check = true;
+//                break;
+//            }
+//        }
+//        if (check) {
+//            System.out.println("thông tin sản phẩm: "+hienThi);
+//        } else {
+//            System.out.println("không có tên sản phẩm cần tìm");
+//        }
+//        return hienThi;
+//
+//    }
+//}
+
+
+    public static void timSanPham(List<Product> products) {
         System.out.println("Nhập tên sản phẩm cần tìm");
         String nameTim = sc.nextLine();
-
         boolean check = false;
-//        chú ý: dòng 159
-        int index = 0;
         for (int i = 0; i < products.size(); i++) {
             if (nameTim.equals(products.get(i).getName())) {
-                index=i;
-                products.get(index);
+                System.out.println("Thông tin sản phẩm cần tìm là: "+products.get(i));
                 check = true;
                 break;
             }
         }
-        if (!check) {
-            System.out.println("tên sản phẩm bạn nhập không tồn tại,vui lòng nhập số 6 và nhập lại tên sản phẩm");
+        if(!check) {
+            System.out.println("tên sản phẩm không tồn tại");
         }
-
     }
 }
-
+//bài theolinkedlist cũng y như vậy
 
 
 
