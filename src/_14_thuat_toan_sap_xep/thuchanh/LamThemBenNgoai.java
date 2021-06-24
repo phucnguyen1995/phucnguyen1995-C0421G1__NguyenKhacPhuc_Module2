@@ -1,11 +1,10 @@
-package _13_thuat_toan_tim_kiem.thuchanh;
+package _14_thuat_toan_sap_xep.thuchanh;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class LamThem {
+public class LamThemBenNgoai {
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
         int[] number={20,24,11,6,44,25,56,77};
@@ -31,48 +30,15 @@ public class LamThem {
 
         ArrayList<Integer> ab=new ArrayList<>();
         for(int i=0;i<number.length;i++) {
-           ab.add(stack.pop());
+            ab.add(stack.pop());
         }
         System.out.println("mảng đảo ngược="+ab);
 
+        Ham(number);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-//        //theo linkedList
-//        LinkedList<Integer> max = new LinkedList<>();
-//        for(int i=0;i<number.length;i++) {
-//            max.add(number[i]);
-//        }
-//        System.out.println("mảng max: "+max);
-//        max.sort(Integer::compareTo);
-////         dòng 17 là autosawps xếp từ nhỏ đến lớn
-//
-//
-//
-////theo arrayList
-//        ArrayList<Integer> ab=new ArrayList<>();
-//        for(int i=0;i<number.length;i++) {
-//            ab.add(number[i]);
-//        }
-//        System.out.println("mang ab "+ab);
-////        ab.sort();
-
-
-//
-//        Ham(number);
     }
+
+
     public static void Ham(int[] a) {
         System.out.println("Nhập giá trị muốn tìm ");
         int value = Integer.parseInt(sc.nextLine());
@@ -91,3 +57,4 @@ public class LamThem {
 
 
 }
+

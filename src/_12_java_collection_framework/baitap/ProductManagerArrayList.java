@@ -115,8 +115,9 @@ public class ProductManagerArrayList {
             if (id == products.get(i).getId()) {
                 check = true;
 
-                System.out.println("Nhập id mới cho sản phẩm");
-                int idNew = Integer.parseInt(sc.nextLine());
+//                System.out.println("Nhập id mới cho sản phẩm");
+//                int idNew = Integer.parseInt(sc.nextLine());
+//                Nhận xét của Chiến:không nên tạo mới id ,id vẫn là id cũ
 
                 System.out.println("Nhập tên mới cho sản phẩm");
                 String nameNew = sc.nextLine();
@@ -124,7 +125,8 @@ public class ProductManagerArrayList {
                 System.out.println("Nhập giá mới cho sản phẩm");
                 double priceNew = Double.parseDouble(sc.nextLine());
 
-                Product product = new Product(idNew, nameNew, priceNew);
+//                Product product = new Product(idNew, nameNew, priceNew);
+                Product product = new Product(id, nameNew, priceNew);
                 products.set(i, product);
                 break;
             }
