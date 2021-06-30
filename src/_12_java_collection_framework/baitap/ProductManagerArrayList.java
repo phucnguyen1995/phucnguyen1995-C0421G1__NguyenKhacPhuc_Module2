@@ -109,16 +109,10 @@ public class ProductManagerArrayList {
     public static void suaSanPham(List<Product> products) {
         System.out.println("Nhập id muốn sửa");
         int id = Integer.parseInt(sc.nextLine());
-
         boolean check = false;
         for (int i = 0; i < products.size(); i++) {
             if (id == products.get(i).getId()) {
                 check = true;
-
-//                System.out.println("Nhập id mới cho sản phẩm");
-//                int idNew = Integer.parseInt(sc.nextLine());
-//                Nhận xét của Chiến:không nên tạo mới id ,id vẫn là id cũ
-
                 System.out.println("Nhập tên mới cho sản phẩm");
                 String nameNew = sc.nextLine();
 
@@ -134,6 +128,10 @@ public class ProductManagerArrayList {
         if (!check) {
             System.out.println("Không tim thấy id này,vui lòng nhập sô 5 và nhập lại id mới");
         }
+
+//        System.out.println("Nhập id mới cho sản phẩm");
+//                int idNew = Integer.parseInt(sc.nextLine());
+//                Nhận xét của Chiến:không nên tạo mới id ,id vẫn là id cũ
     }
 
     public static void xoaSanPhamTuId(List<Product> products) {
