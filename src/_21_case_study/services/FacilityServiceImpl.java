@@ -33,6 +33,8 @@ public class FacilityServiceImpl implements FacilityService {
     static Scanner sc = new Scanner(System.in);
     private static LinkedHashMap<Facility, Integer> facilityMap = new LinkedHashMap<>();
 
+
+
     static {
         Villa palmVilla = new Villa("Palm villa No.01", "400", "30000000", 10, "Weekly pay", "Excellent", "30", 3);
         Villa cocoVilla = new Villa("Coconut villa No.02", "380", "35000000", 10, "Weekly pay", "Excellent", "30", 4);
@@ -41,7 +43,7 @@ public class FacilityServiceImpl implements FacilityService {
         Room room101 = new Room("Room No.101", "50", "7000000", 2, "Daily pay", "Free drinks and breakfast everyday");
         Room room102 = new Room("Room No.102", "50", "9000000", 2, "Daily pay", "Free drinks, breakfast and mudbath services");
 
-//        Room room102 = new Room("Room No.102", "50", "9000000", 2, "Daily pay", "Free drinks, breakfast and mudbath services");
+//   Ta tạo gắn cứng
         facilityMap.put(palmVilla, 5);
         facilityMap.put(cocoVilla, 3);
         facilityMap.put(westHouse, 5);
@@ -70,7 +72,7 @@ public class FacilityServiceImpl implements FacilityService {
                 case 1:
                     System.out.println("Bạn chọn Add new villa.");
                     Villa newVilla = new Villa();
-                    addRegularProperties(newVilla);
+                    hamNhap(newVilla);
                     System.out.println("Nhập tiêu chuẩn phòng: ");
 
                     newVilla.setRoomStandard(sc.nextLine());
@@ -88,7 +90,7 @@ public class FacilityServiceImpl implements FacilityService {
 
                     System.out.println("Bạn chọn Add new house.");
                     House newHouse = new House();
-                    addRegularProperties(newHouse);
+                   hamNhap(newHouse);
                     System.out.println("Nhập tiêu chuẩn phòng ");
                     newHouse.setRoomStandard(sc.nextLine());
 
@@ -102,7 +104,7 @@ public class FacilityServiceImpl implements FacilityService {
                 case 3:
                     System.out.println("Bạn chọn Add new room.");
                     Room newRoom = new Room();
-                    addRegularProperties(newRoom);
+                   hamNhap(newRoom);
                     System.out.println("Nhập dịch vụ miễn phí đi kèm bạn muốn: ");
                     newRoom.setFreeServices(sc.nextLine());
                     facilityMap.put(newRoom, 0);
@@ -134,7 +136,7 @@ public class FacilityServiceImpl implements FacilityService {
 //    Kiểu thuê (bao gồm thuê theo năm, tháng, ngày, giờ.
 
 
-    public void addRegularProperties(Facility f) {
+    public void hamNhap(Facility f) {
 
 //        cách 1 :chi tiết
 //        System.out.println("Nhập tên dịch vụ bạn muốn ");

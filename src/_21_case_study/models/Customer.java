@@ -1,6 +1,8 @@
 package _21_case_study.models;
 
-public class Customer extends Person {
+import java.io.Serializable;
+
+public class Customer extends Person implements Serializable {
 //     Custommer(khách hàng) có thêm:
 //     Loại khách
 //     Địa chỉ

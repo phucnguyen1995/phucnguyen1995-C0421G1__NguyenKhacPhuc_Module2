@@ -95,7 +95,7 @@ public class FuramaController {
                     int choice3 = sc.nextInt();
                     switch (choice3) {
                         case 1:
-                            facilityService.displayListFacility();
+                            facilityService.displayList();
                             break;
 
                         case 2:

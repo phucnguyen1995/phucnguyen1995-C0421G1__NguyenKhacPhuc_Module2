@@ -13,9 +13,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     static Scanner sc = new Scanner(System.in);
 
     ReadAndWriteByteStream<Employee>  readAndWriteByteStream = new ReadAndWriteByteStream<>();
+    private static final String filePath ="src\\\\_21_case_study\\\\data\\\\Employee.csv";
 
 //    File file=new File(" src\\_21_case_study\\data\\Employee.csv");
-     private static final String filePath ="src\\\\_21_case_study\\\\data\\\\Employee.csv";
+
     public static List<Employee> employees = new ArrayList<>();
 //     ReadAndWriteByteStream<Employee> employeeReadAndWriteByteStream = new ReadAndWriteByteStream<>();
     String[] trinhDoArr = {"Đại học", "Cao đẳng", "Trung cấp", "Sau đại học"};
@@ -26,7 +27,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (employees.isEmpty()) {
             System.out.println("Danh sách đang trống");
         } else {
-            getAll();
+            getAll1();
             for (Employee hienThi : employees) {
                 System.out.println(hienThi);
 
@@ -36,7 +37,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     }
 
-    public List getAll() {
+    public List getAll1() {
         employees = readAndWriteByteStream.readFileByteStream(filePath);
         return employees;
     }

@@ -2,6 +2,8 @@ package _21_case_study.services;
 
 import _21_case_study.models.Customer;
 
+import _21_case_study.utils.ReadAndWriteByteStream;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -10,6 +12,9 @@ public class CustomerServiceImpl implements CustomerService {
 
 
     static Scanner sc = new Scanner(System.in);
+
+    ReadAndWriteByteStream<Customer> readAndWriteByteStream = new ReadAndWriteByteStream<>();
+    private static final String filePath ="src\\_21_case_study\\data\\Customer.csv";
 
     public static List<Customer> customers = new LinkedList<>();
 
@@ -20,6 +25,7 @@ public class CustomerServiceImpl implements CustomerService {
         if (customers.isEmpty()) {
             System.out.println("Danh sách đang trống");
         } else {
+            getAll2();
             for (Customer hienThi : customers) {
                 System.out.println(hienThi);
 
@@ -27,6 +33,11 @@ public class CustomerServiceImpl implements CustomerService {
         }
 
 
+    }
+
+    public List getAll2() {
+        customers = readAndWriteByteStream.readFileByteStream(filePath);
+        return customers;
     }
 
 
@@ -155,6 +166,8 @@ public class CustomerServiceImpl implements CustomerService {
                     }
                 }
             }
+            readAndWriteByteStream.clearData(filePath);
+            readAndWriteByteStream.writeFileByteStream(customers,filePath);
 
         }
     }
@@ -226,6 +239,7 @@ public class CustomerServiceImpl implements CustomerService {
         Customer newCustomer = new Customer(code, name, dayOfBirth, sex, email, idNumber, phone, type, address);
         customers.add(newCustomer);
         System.out.println("Bạn đã nhập dữ liệu thành công");
+        readAndWriteByteStream.writeFileByteStream(customers,filePath);
     }
 
 
