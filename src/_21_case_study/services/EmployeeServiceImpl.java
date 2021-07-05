@@ -1,7 +1,9 @@
 package _21_case_study.services;
 
 import _21_case_study.models.Employee;
+import _21_case_study.utils.ReadAndWriteByteStream;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -10,16 +12,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     static Scanner sc = new Scanner(System.in);
 
-    public static List<Employee> employees = new ArrayList<>();
+    ReadAndWriteByteStream<Employee>  readAndWriteByteStream = new ReadAndWriteByteStream<>();
 
+//    File file=new File(" src\\_21_case_study\\data\\Employee.csv");
+     private static final String filePath ="src\\\\_21_case_study\\\\data\\\\Employee.csv";
+    public static List<Employee> employees = new ArrayList<>();
+//     ReadAndWriteByteStream<Employee> employeeReadAndWriteByteStream = new ReadAndWriteByteStream<>();
     String[] trinhDoArr = {"Đại học", "Cao đẳng", "Trung cấp", "Sau đại học"};
     String[] viTriArr = {"Lễ tân", "Người phục vụ", "Chuyên viên", "Giám sát", "Người quản lý", "Giám đốc"};
 
     @Override
-    public void displayList() {
+    public void  displayList() {
         if (employees.isEmpty()) {
             System.out.println("Danh sách đang trống");
         } else {
+            getAll();
             for (Employee hienThi : employees) {
                 System.out.println(hienThi);
 
@@ -29,12 +36,20 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     }
 
+    public List getAll() {
+        employees = readAndWriteByteStream.readFileByteStream(filePath);
+        return employees;
+    }
+
+
+
 
     @Override
     public void editEmployee() {
         if (employees.isEmpty()) {
             System.out.println("Danh sách đang trống");
         } else {
+
             System.out.println("Vui lòng chọn nhân viên muốn chỉnh sửa");
             boolean isTrueCode = false;
             while (!isTrueCode) {
@@ -193,7 +208,10 @@ public class EmployeeServiceImpl implements EmployeeService {
                 }
             }
 
+            readAndWriteByteStream.clearData(filePath);
+            readAndWriteByteStream.writeFileByteStream(employees,filePath);
         }
+
 
 
     }
@@ -226,7 +244,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         String phone = sc.nextLine();
 
         System.out.println("Nhập tiền lương nhân viên muốn thêm: ");
-        double salary = Integer.parseInt(sc.nextLine());
+//        double salary = Integer.parseInt(sc.nextLine());
+        double salary = Double.parseDouble(sc.nextLine());
 
         System.out.println("Vui lòng chọn lựa chọn số từ 0 đến 3 tương ứng trình dộ của nhân viên muốn thêm");
         for (int i = 0; i < trinhDoArr.length; i++) {
@@ -300,6 +319,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee newEmployee = new Employee(code, name, dayOfBirth, sex, email, idNumber, phone, viTriAdd, trinhDoAdd, salary);
         employees.add(newEmployee);
         System.out.println("Bạn đã nhập dữ liệu thành công ");
+        readAndWriteByteStream.writeFileByteStream(employees,filePath);
+
     }
+
 
 }

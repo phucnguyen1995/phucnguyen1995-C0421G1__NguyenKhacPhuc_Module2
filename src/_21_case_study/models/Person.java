@@ -1,6 +1,8 @@
 package _21_case_study.models;
 
-public abstract class Person {
+import java.io.Serializable;
+
+public abstract class Person implements Serializable {
 //Employee bao gồm: Mã nhân viên,Họ tên,   Ngày sinh, Giới tính,  Số CMND, Số Điện Thoại, Email, Trình độ, Vị trí, lương
 // Customer bao gồm:Mã khách hàng, Họ tên , Ngày sinh, Giới tính, Số CMND, Số Điện Thoại, Email, Loại khách, Địa chỉ
 
@@ -10,7 +12,7 @@ public abstract class Person {
 //    Custommer(khách hàng) có thêm:Loại khách, Địa chỉ
 
     protected int code;
-    protected String name, dayOfBirth, sex, email,phoneNumber;
+    protected String name, dayOfBirth, sex, email, phoneNumber;
     protected int idNumber;
 
     public Person(int code, String name, String dayOfBirth, String sex,
@@ -99,7 +101,6 @@ public abstract class Person {
                 ", phoneNumber=" + phoneNumber +
                 '}';
     }
-
 
 
 }

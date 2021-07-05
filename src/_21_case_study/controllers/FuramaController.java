@@ -2,15 +2,12 @@ package _21_case_study.controllers;
 
 
 import _21_case_study.services.CustomerServiceImpl;
-import _21_case_study.services.EmployeeServiceImpl;
 import _21_case_study.services.FacilityServiceImpl;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class FuramaController {
-    public  static Scanner sc = new Scanner(System.in);
+    public static Scanner sc = new Scanner(System.in);
 
     public static void displayMainMenu() {
 
@@ -30,33 +27,34 @@ public class FuramaController {
 //            trung khuyên dùng     int choice = Integer.parseInt(scanner.nextLine()); giờ làm chạy thử lại ra lỗi
             switch (choice) {
                 case 1:
-                    EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
-                    System.out.println("1.Display list employees");
-                    System.out.println("2.Edit employee");
-                    System.out.println("3.Add new employee");
-                    System.out.println("4.Return main menu");
-
-                    int choiceOne = sc.nextInt();
-                    switch (choiceOne) {
-                        case 1:
-                            employeeService.displayList();
-                            break;
-
-                        case 2:
-                            employeeService.editEmployee();
-                            break;
-
-                        case 3:
-                            employeeService.addNew();
-                            break;
-
-                        case 4:
-                            displayMainMenu();
-                            break;
-
-                        default:
-                            System.err.println("Vui lòng nhập lại cho đúng");
-                    }
+                    EmployeeController.Case1();
+//                    EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
+//                    System.out.println("1.Display list employees");
+//                    System.out.println("2.Edit employee");
+//                    System.out.println("3.Add new employee");
+//                    System.out.println("4.Return main menu");
+//
+//                    int choiceOne = sc.nextInt();
+//                    switch (choiceOne) {
+//                        case 1:
+//                            employeeService.displayList();
+//                            break;
+//
+//                        case 2:
+//                            employeeService.editEmployee();
+//                            break;
+//
+//                        case 3:
+//                            employeeService.addNew();
+//                            break;
+//
+//                        case 4:
+//                            displayMainMenu();
+//                            break;
+//
+//                        default:
+//                            System.err.println("Vui lòng nhập lại cho đúng");
+//                    }
                     break;
 
                 case 2:
@@ -89,7 +87,7 @@ public class FuramaController {
                     }
                     break;
                 case 3:
-                  FacilityServiceImpl facilityService = new FacilityServiceImpl();
+                    FacilityServiceImpl facilityService = new FacilityServiceImpl();
                     System.out.println("1.Display list facility");
                     System.out.println("2.Add new facility");
                     System.out.println("3.Display list facility maintenance");
@@ -97,11 +95,11 @@ public class FuramaController {
                     int choice3 = sc.nextInt();
                     switch (choice3) {
                         case 1:
-                            facilityService.listFacility();
+                            facilityService.displayListFacility();
                             break;
 
                         case 2:
-                            facilityService.addNewFacility();
+                            facilityService.addNew();
                             break;
 
                         case 3:

@@ -1,6 +1,8 @@
 package _21_case_study.models;
 
-public class Employee extends Person {
+import java.io.Serializable;
+
+public class Employee extends Person implements Serializable {
 //        Employee (nhân viên ) có thêm:
 //        Trình độ,
 //        Vị trí,

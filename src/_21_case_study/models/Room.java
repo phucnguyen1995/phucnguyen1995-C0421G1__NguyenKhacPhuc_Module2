@@ -1,6 +1,14 @@
 package _21_case_study.models;
 
 public class Room extends Facility {
+    //    Các loại dịch vụ này sẽ bao có các thông tin:
+//    Tên dịch vụ,
+//    Diện tích sử dụng
+//    Chi phí thuê,
+//    Số lượng người tối đa,
+//    Kiểu thuê (bao gồm thuê theo năm, tháng, ngày, giờ.
+
+
 //    -	Riêng loại Room sẽ có thêm thông tin:
 //    Dịch vụ miễn phí đi kèm.
 
@@ -11,7 +19,11 @@ public class Room extends Facility {
         this.freeServices = freeServices;
     }
 
+    public Room(String s, String s1, String s2, int i, String daily_pay, String free_drinks_and_breakfast_everyday) {
+    }
+
     public Room() {
+
     }
 
     public String getFreeServices() {

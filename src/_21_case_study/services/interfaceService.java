@@ -8,4 +8,7 @@ public interface interfaceService {
 //    7.	Xây dựng các class triển khai các interface trong mục 6 ở trên như: FacilityServiceImpl,
 //    CustomerServiceImpl, EmployeeServiceImpl... (có thể để trống các class triển khai chưa cần code chức năng)
 
+
+    void addNew();
+    void displayList();
 }

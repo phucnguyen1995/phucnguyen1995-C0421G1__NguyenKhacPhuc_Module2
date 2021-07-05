@@ -14,6 +14,8 @@ public abstract class Facility {
 //    Diện tích hồ bơi,
 //    Số tầng.
 
+//     Villa palmVilla = new Villa("Palm villa No.01", "400", "30000000", 10, "Weekly pay", "Excellent", "30", 3);
+
 //     -	Riêng loại Room sẽ có thêm thông tin:
 //    Dịch vụ miễn phí đi kèm.
 
@@ -25,8 +27,8 @@ public abstract class Facility {
 
 
     protected String nameOfService;
-    protected double usingArea;
-    protected double price;
+    protected String usingArea;
+    protected String price;
     protected int capacity;
     protected String typeOfHiring;
 
@@ -42,21 +44,21 @@ public abstract class Facility {
         this.nameOfService = nameOfService;
     }
 
-    public double getUsingArea() {
+    public String getUsingArea() {
 
         return usingArea;
     }
 
-    public void setUsingArea(double usingArea) {
+    public void setUsingArea(String usingArea) {
         this.usingArea = usingArea;
     }
 
-    public double getPrice() {
+    public String getPrice() {
 
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
 
         this.price = price;
     }
@@ -80,4 +82,14 @@ public abstract class Facility {
     }
 
 
+    @Override
+    public String toString() {
+        return "Facility{" +
+                "nameOfService='" + nameOfService + '\'' +
+                ", usingArea=" + usingArea +
+                ", price=" + price +
+                ", capacity=" + capacity +
+                ", typeOfHiring='" + typeOfHiring + '\'' +
+                '}';
+    }
 }
