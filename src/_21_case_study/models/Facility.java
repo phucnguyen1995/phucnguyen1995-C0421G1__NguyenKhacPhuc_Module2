@@ -1,6 +1,8 @@
 package _21_case_study.models;
 
-public abstract class Facility {
+import java.io.Serializable;
+
+public abstract class Facility implements Serializable {
 //    Các loại dịch vụ này sẽ bao có các thông tin:
 //    Tên dịch vụ,
 //    Diện tích sử dụng
@@ -33,6 +35,14 @@ public abstract class Facility {
     protected String typeOfHiring;
 
     public Facility() {
+    }
+
+    public Facility(String nameOfService, String usingArea, String price, int capacity, String typeOfHiring) {
+        this.nameOfService = nameOfService;
+        this.usingArea = usingArea;
+        this.price = price;
+        this.capacity = capacity;
+        this.typeOfHiring = typeOfHiring;
     }
 
     public String getNameOfService() {

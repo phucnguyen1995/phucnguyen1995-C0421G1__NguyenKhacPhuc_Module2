@@ -3,6 +3,9 @@ package _21_case_study.models;
 import java.io.Serializable;
 
 public class Employee extends Person implements Serializable {
+
+//     =>person:Mã,Họ tên,  Ngày sinh, Giới tính,  Số CMND, Số Điện Thoại, Email
+
 //        Employee (nhân viên ) có thêm:
 //        Trình độ,
 //        Vị trí,

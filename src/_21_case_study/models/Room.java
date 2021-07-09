@@ -1,6 +1,8 @@
 package _21_case_study.models;
 
-public class Room extends Facility {
+import java.io.Serializable;
+
+public class Room extends Facility implements Serializable {
     //    Các loại dịch vụ này sẽ bao có các thông tin:
 //    Tên dịch vụ,
 //    Diện tích sử dụng
@@ -14,12 +16,10 @@ public class Room extends Facility {
 
     private String freeServices;
 
-    public Room(String freeServices) {
-        super();
-        this.freeServices = freeServices;
-    }
 
-    public Room(String s, String s1, String s2, int i, String daily_pay, String free_drinks_and_breakfast_everyday) {
+    public Room(String nameOfService, String usingArea, String price, int capacity, String typeOfHiring, String freeServices) {
+        super(nameOfService, usingArea, price, capacity, typeOfHiring);
+        this.freeServices = freeServices;
     }
 
     public Room() {

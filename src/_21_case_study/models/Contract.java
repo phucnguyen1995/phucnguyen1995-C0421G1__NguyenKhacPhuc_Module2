@@ -1,6 +1,8 @@
 package _21_case_study.models;
 
-public class Contract {
+import java.io.Serializable;
+
+public class Contract implements Serializable {
 //    Hợp đồng thuê sẽ bao gồm các thông tin:
 //   1. Số hợp đồng,
 //   2. mã booking,

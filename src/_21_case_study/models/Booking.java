@@ -1,6 +1,8 @@
 package _21_case_study.models;
 
-public class Booking {
+import java.io.Serializable;
+
+public class Booking implements Serializable {
 //    booking bao gồm:
 //    mã booking,
 //    ngày bắt đầu,
