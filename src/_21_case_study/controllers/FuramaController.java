@@ -140,6 +140,7 @@ public class FuramaController {
                     break;
                 default:
                     System.out.println("Chọn sai,vui lòng chọn lại");
+                    FuramaController.displayMainMenu();
             }
         }
 

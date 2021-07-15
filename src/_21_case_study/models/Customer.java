@@ -10,13 +10,31 @@ public class Customer extends Person implements Serializable {
     private String type;
     private String address;
 
-    public Customer(int code, String name, String dayOfBirth, String sex, String email, int idNumber, String phone, String type, String address) {
-        super();
+//    public Customer(int code, String name, String dayOfBirth, String sex, String email, int idNumber, String phone, String type, String address) {
+//        super();
+//        this.type = type;
+//        this.address = address;
+//    }
+
+
+    public Customer(int code, String name, String dayOfBirth, String sex, String email,
+                    int idNumber, String phoneNumber, String type, String address) {
+        super(code, name, dayOfBirth, sex, email, idNumber, phoneNumber);
         this.type = type;
         this.address = address;
     }
 
-    public Customer(int code, String name, String dayOfBirth, String sex, String email, int idNumber, String phone, String type, double address) {
+//    public Customer(int code, String name, String dayOfBirth, String sex, String email, int idNumber, String phoneNumber) {
+//        super(code, name, dayOfBirth, sex, email, idNumber, phoneNumber);
+//    }
+
+//    public Customer() {
+//    }
+
+
+
+
+    public Customer() {
     }
 
     public String getType() {

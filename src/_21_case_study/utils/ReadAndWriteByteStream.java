@@ -19,7 +19,7 @@ public class ReadAndWriteByteStream<T> implements InterFaceByteStream<T> {
             fileInputStream.close();
         }
         catch (IOException | ClassNotFoundException e) {
-            System.out.println("Data null "+e);
+            System.out.println("Danh sách đang trống "+e);
         }
         return list;
     }

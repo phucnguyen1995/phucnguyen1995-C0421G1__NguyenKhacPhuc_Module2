@@ -12,40 +12,42 @@ public class CustomerServiceImpl implements CustomerService {
 
 
     static Scanner sc = new Scanner(System.in);
+    private static List<Customer> customers = new LinkedList<>();
 
     ReadAndWriteByteStream<Customer> readAndWriteByteStream = new ReadAndWriteByteStream<>();
-    private static final String filePath ="src\\_21_case_study\\data\\Customer.csv";
-
-    public static List<Customer> customers = new LinkedList<>();
+    static final String path ="src\\_21_case_study\\data\\Customer.csv";
 
     String[] loaiKhachHangArr = {"Diamond", "Platinium", "Gold", "Silver", "Member"};
 
     @Override
     public void displayList() {
-        if (customers.isEmpty()) {
-            System.out.println("Danh sách đang trống");
-        } else {
-            getAll2();
-            for (Customer hienThi : customers) {
-                System.out.println(hienThi);
+        customers = readAndWriteByteStream.readFileByteStream(path);
+//        if (customers.isEmpty()) {
+//            System.out.println("Danh sách đang trống");
+//        } else {
+//            getAll2();
+            for (Customer e : customers) {
+                System.out.println(e.toString());
 
             }
-        }
+//        }
 
 
     }
 
-    public List getAll2() {
-        customers = readAndWriteByteStream.readFileByteStream(filePath);
-        return customers;
-    }
+//    public List getAll2() {
+//        customers = readAndWriteByteStream.readFileByteStream(filePath);
+//        return customers;
+//    }
 
 
     @Override
     public void editCustomer() {
-        if (customers.isEmpty()) {
-            System.out.println("Danh sách đang trống");
-        } else {
+//        if (customers.isEmpty()) {
+//            System.out.println("Danh sách đang trống");
+//        } else {
+        customers = readAndWriteByteStream.readFileByteStream(path);
+        if(!customers.isEmpty()) {
             System.out.println("Vui lòng chọn khách hàng muốn chỉnh sửa");
             boolean isTrueCode = false;
             while (!isTrueCode) {
@@ -166,8 +168,10 @@ public class CustomerServiceImpl implements CustomerService {
                     }
                 }
             }
-            readAndWriteByteStream.clearData(filePath);
-            readAndWriteByteStream.writeFileByteStream(customers,filePath);
+//            readAndWriteByteStream.clearData(filePath);
+//            readAndWriteByteStream.writeFileByteStream(customers,filePath);
+            readAndWriteByteStream.clearData(path);
+            readAndWriteByteStream.writeFileByteStream(customers,path);
 
         }
     }
@@ -176,6 +180,8 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void addNew() {
+        customers = readAndWriteByteStream.readFileByteStream(path);
+
         System.out.println("Nhập mã khách hàng muốn thêm: ");
         int code = Integer.parseInt(sc.nextLine());
 
@@ -239,7 +245,8 @@ public class CustomerServiceImpl implements CustomerService {
         Customer newCustomer = new Customer(code, name, dayOfBirth, sex, email, idNumber, phone, type, address);
         customers.add(newCustomer);
         System.out.println("Bạn đã nhập dữ liệu thành công");
-        readAndWriteByteStream.writeFileByteStream(customers,filePath);
+//        readAndWriteByteStream.writeFileByteStream(customers,filePath);
+        readAndWriteByteStream.writeFileByteStream(customers,path);
     }
 
 

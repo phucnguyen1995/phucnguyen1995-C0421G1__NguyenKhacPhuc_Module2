@@ -1,55 +1,60 @@
 package _21_case_study.services;
 
+import _21_case_study.libs.CheckDinhDang;
 import _21_case_study.models.Employee;
 import _21_case_study.utils.ReadAndWriteByteStream;
+import _21_case_study.utils.ReadAndWriteFile;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeServiceImpl implements EmployeeService {
 
     static Scanner sc = new Scanner(System.in);
+    private static List<Employee> employees = new ArrayList<>();
 
-    ReadAndWriteByteStream<Employee>  readAndWriteByteStream = new ReadAndWriteByteStream<>();
-    private static final String filePath ="src\\\\_21_case_study\\\\data\\\\Employee.csv";
 
-//    File file=new File(" src\\_21_case_study\\data\\Employee.csv");
+    ReadAndWriteByteStream<Employee> readAndWriteByteStream = new ReadAndWriteByteStream<>();
+    static final String path = "src\\\\_21_case_study\\\\data\\\\Employee.csv";
 
-    public static List<Employee> employees = new ArrayList<>();
-//     ReadAndWriteByteStream<Employee> employeeReadAndWriteByteStream = new ReadAndWriteByteStream<>();
+
     String[] trinhDoArr = {"Đại học", "Cao đẳng", "Trung cấp", "Sau đại học"};
     String[] viTriArr = {"Lễ tân", "Người phục vụ", "Chuyên viên", "Giám sát", "Người quản lý", "Giám đốc"};
 
     @Override
-    public void  displayList() {
-        if (employees.isEmpty()) {
-            System.out.println("Danh sách đang trống");
-        } else {
-            getAll1();
-            for (Employee hienThi : employees) {
-                System.out.println(hienThi);
+    public void displayList() {
+        employees = readAndWriteByteStream.readFileByteStream(path);
 
-            }
+//        if (employees.isEmpty()) {
+//            System.out.println("Danh sách đang trống");
+//        } else {
+//            getAll1();
+
+        for (Employee e : employees) {
+            System.out.println(e.toString());
         }
+//        }
 
 
     }
 
-    public List getAll1() {
-        employees = readAndWriteByteStream.readFileByteStream(filePath);
-        return employees;
-    }
-
-
+//    public List getAll1() {
+//        employees = readAndWriteByteStream.readFileByteStream(filePath);
+//        return employees;
+//    }
 
 
     @Override
     public void editEmployee() {
-        if (employees.isEmpty()) {
-            System.out.println("Danh sách đang trống");
-        } else {
+//        employees = readAndWriteFileEmployees.readFile(FILE_PATH);
+        employees = readAndWriteByteStream.readFileByteStream(path);
+        if (!employees.isEmpty()) {
+//            System.out.println("Danh sách đang trống");
+//        } else {
+
 
             System.out.println("Vui lòng chọn nhân viên muốn chỉnh sửa");
             boolean isTrueCode = false;
@@ -90,8 +95,10 @@ public class EmployeeServiceImpl implements EmployeeService {
                             break;
 
                         case 2:
-                            System.out.println("Vui lòng nhập lại ngày tháng năm sinh ban muốm sửa ");
-                            String newDob = sc.nextLine();
+//                            System.out.println("Vui lòng nhập lại ngày tháng năm sinh ban muốm sửa ");
+                            System.out.println("Nhập ngày sinh mới (Định dạng: dd / mm / yyyy và tuổi phải nằm trong khoảng 18 - 100)");
+//                            String newDob = sc.nextLine();
+                            String newDob= CheckDinhDang.ngaySinh();
                             employees.get(index).setDayOfBirth(newDob);
                             break;
 
@@ -209,28 +216,28 @@ public class EmployeeServiceImpl implements EmployeeService {
                 }
             }
 
-            readAndWriteByteStream.clearData(filePath);
-            readAndWriteByteStream.writeFileByteStream(employees,filePath);
+            readAndWriteByteStream.clearData(path);
+            readAndWriteByteStream.writeFileByteStream(employees, path);
+//            readAndWriteFileEmployees.writeFile(FILE_PATH, employees);
         }
-
 
 
     }
 
 
-
-
-
     @Override
     public void addNew() {
+//        employees = readAndWriteFileEmployees.readFile(FILE_PATH);
+        employees = readAndWriteByteStream.readFileByteStream(path);
         System.out.println("Nhập mã nhân viên muốn thêm: ");
         int code = Integer.parseInt(sc.nextLine());
 
         System.out.println("Nhập tên nhân viên muốn thêm: ");
         String name = sc.nextLine();
 
-        System.out.println("Nhập ngày tháng năm sinh nhân viên muốn thêm:  ");
-        String dayOfBirth = sc.nextLine();
+//        System.out.println("Nhập ngày tháng năm sinh nhân viên muốn thêm:  ");
+        System.out.println("Nhập ngày sinh mới (Định dạng: dd / mm / yyyy và tuổi phải nằm trong khoảng 18 - 100)");
+        String dayOfBirth = CheckDinhDang.ngaySinh();
 
         System.out.println("Nhập giơi tính nhân viên muốn thêm: ");
         String sex = sc.nextLine();
@@ -239,6 +246,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         String email = sc.nextLine();
 
         System.out.println("Nhập số CMND nhân viên muốn thêm: ");
+//        9 số
         int idNumber = Integer.parseInt(sc.nextLine());
 
         System.out.println("Nhập sô điện thoại nhân viên muốn thêm: ");
@@ -320,7 +328,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee newEmployee = new Employee(code, name, dayOfBirth, sex, email, idNumber, phone, viTriAdd, trinhDoAdd, salary);
         employees.add(newEmployee);
         System.out.println("Bạn đã nhập dữ liệu thành công ");
-        readAndWriteByteStream.writeFileByteStream(employees,filePath);
+//        readAndWriteByteStream.writeFileByteStream(employees,filePath);
+//        readAndWriteFileEmployees.writeFile(FILE_PATH, employees);
+        readAndWriteByteStream.writeFileByteStream(employees, path);
 
     }
 
