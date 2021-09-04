@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/bootstrap4/css/bootstrap.css">
+    <style>
+        tr {
+            text-align: center;
+        }
+        .modal-header {
+            /*color:#fff;*/
+            padding:9px 15px;
+            border-bottom:1px solid #eee;
+            background-color: darkseagreen;
+            -webkit-border-top-left-radius: 5px;
+            -webkit-border-top-right-radius: 5px;
+            -moz-border-radius-topleft: 5px;
+            -moz-border-radius-topright: 5px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid border ">
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" style="height: 600px;width: 100%">
+            <div class="carousel-item active">
+                <img src="/image/bia1.jpg" class="d-inline-block w-100 h-20" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="/image/bia2.jpg" class="d-inline-block w-100 h-20" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="/image/bia3.jpg" class="d-inline-block w-100 h-20" alt="...">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+
+<!--cùng 1 hàng:-->
+<!--style=" display:inline-block-->
+<h1 th:align="center">List</h1>
+
+    <p th:align="center">
+        <a th:href="@{/}">
+            <button type="button" class="btn btn-primary">Home</button>
+        </a>
+    </p>
+
+<div style=" display:inline-block;width:50%;float: left ; margin-left: 110px;";>
+
+   <a th:href="@{/create}">
+     <button type="button" class="btn btn-success">Add Create</button>
+   </a>
+</div>
+
+<div style=" display:inline-block;">
+<form action="/" class="form-inline my-2 my-lg-0">
+
+    <select class="form-control mr-sm-2" name="service">
+        <option selected disabled value="0">serviceName</option>
+        <option value="1">Đất</option>
+        <option value="2">Nhà đất</option>
+    </select>
+
+    <input class="form-control mr-sm-2" type="search" placeholder="customerName" aria-label="Search" name="name">
+
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+</div>
+
+
+<p>
+
+<div th:if="${message}" class="alert alert-warning" role="alert">
+    <span th:text="${message}" style="color: red;margin-left: 550px"></span>
+</div>
+
+</p>
+
+<table class="table table-striped">
+    <thead>
+    <tr class="alert alert-primary" role="alert">
+        <th scope="col">Id Giao dịch</th>
+        <th scope="col">Mã Giao Dịch</th>
+        <th scope="col">Tên Khách Hàng</th>
+        <th scope="col">Ngày giao dịch</th>
+        <th scope="col">Loại Dịch Vụ</th>
+        <th scope="col">Đơn giá</th>
+        <th scope="col">Diện tích</th>
+        <th scope="col">Action</th>
+
+<!--NẾU ĐỀ BẮT XÓA Ở LIST-GIAO DIỆN LUN TA THÊM HÀNG NÀY NHÉ NHƯNG NẾU DƯ TIME THÌ ĐỔI TH ACTION ROWSPAL=2-->
+        <th scope="col">Action</th>
+<!--**************************************-->
+
+<!--        NẾU ĐỂ BẮT EDIT Ở GAIO DIỆN THÌ TA THÊM HÀNG NÀY-->
+        <th scope="col">Action</th>
+<!--        ***************************-->
+
+
+
+<!--        Nếu xóa nhiều thì thêm dòng này-->
+        <th scope="col">Action</th>
+<!--        *******************************-->
+
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="deal: ${deals}">
+
+        <td th:text="${deal.dealId}"></td>
+
+        <td th:text="${deal.dealCode}"></td>
+        <td th:text="${deal.customer.customerName}"></td>
+        <td th:text="${deal.dateTime}"></td>
+        <td>
+            <p th:if="${deal.serviceName}==1">Đất</p>
+            <p th:if="${deal.serviceName}==2">Nhà đất</p>
+        </td>
+        <td th:text="${deal.money}"></td>
+        <td th:text="${deal.area}"></td>
+
+
+        <td>
+            <a th:href="@{/view/__${deal.dealId}__ }">
+            <button type="button" class="btn btn-primary">View</button>
+            </a>
+        </td>
+
+
+<!--NẾU ĐỀ BẮT XÓA Ở LIST-GIAO DIỆN LUN TA THÊM HÀNG NÀY-->
+
+<!--        <td>-->
+<!--            <button class="btn btn-danger" data-toggle="modal" data-target="#myModal"-->
+<!--                    th:data-parameter1="${deal.dealId}"-->
+<!--                    th:data-parameter2="${deal.customer.customerName}"-->
+<!--                    onclick="showModal(this.getAttribute('data-parameter1'),this.getAttribute('data-parameter2'))">-->
+<!--                Delete-->
+<!--            </button>-->
+<!--        </td>-->
+
+<!--*******************************************************-->
+        <!--        NẾU ĐỂ BẮT EDIT Ở GIAO DIỆN THÌ TA THÊM HÀNG NÀY COPY CỦA VIEW XUỐNG SỬA THÀNH CHỮ EDIT-->
+<!--sửa chữ view thành edit-->
+        <td>
+            <a th:href="@{/edit/__${deal.dealId}__ }">
+                <button type="button" class="btn btn-primary">Edit</button>
+            </a>
+        </td>
+<!--**************************        -->
+
+
+        <td style="text-align: center">
+            <input class="listId" id="listId" name="listId" type="checkbox"
+                   th:value="${deal.dealId}"/>
+        </td>
+
+
+    </tr>
+
+    <!--Nếu xóa nhiều ô ta thêm dòng này 1 tr mới-->
+    <tr>
+        <td colspan="10"></td>
+        <td>
+            <button class="btn btn-danger" data-toggle="modal" data-target="#myModal"
+                    onclick="showModal()">
+                Xoá
+            </button>
+        </td>
+    </tr>
+
+
+
+    </tbody>
+
+</table>
+
+
+<div>
+    <a th:href="@{'/'(page=${deals.number - 1},service=${keywordService},name=${keywordName})}"
+       th:if="${deals.hasPrevious()}">Previous</a>
+
+     <span th:text="${deals.number+1}"></span>/<span th:text="${deals.totalPages}"></span>
+
+    <a th:href="@{'/'(page=${deals.number + 1},service=${keywordService},name=${keywordName})}"
+       th:if="${deals.hasNext()}">Next</a>
+</div>
+
+
+
+
+
+
+
+<div class="alert alert-success" role="alert">
+    <p style="color: green;text-align: center">Address: 67 Pham Quang Anh Street, Son Tra District, Da Nang City</p>
+</div>
+
+
+<!--******************MODEL XÓA 1 ĐỐI TƯỢNG**********-->
+<!--</div>-->
+<!--<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog">-->
+<!--        &lt;!&ndash;        &ndash;&gt;-->
+<!--        <form th:action="@{/delete}" method="get">-->
+<!--            <div class="modal-content">-->
+<!--                <div class="modal-header">-->
+<!--                    <h5 class="modal-title" id="myModalLabel">Accept delete transaction</h5>-->
+<!--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                        <span aria-hidden="true">&times;</span>-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                    Do you want to delete :-->
+<!--                    <span style="color: red" id="customerName"></span>???-->
+<!--                </div>-->
+<!--                <div class="modal-footer">-->
+<!--                    <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">-->
+<!--                    <input type="submit" class="btn btn-danger btn-ok" id="delete" value="Delete">-->
+<!--                    &lt;!&ndash;&ndash;&gt;-->
+<!--                    <input type="hidden" id="dealId" name="id">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<script type="text/javascript">-->
+<!--    function showModal(id, name) {-->
+<!--        document.getElementById("dealId").value = id;-->
+<!--        document.getElementById("customerName").innerText = name;-->
+<!--    }-->
+<!--</script>-->
+<!--*********************************************************-->
+
+
+<!--xÓA NHIỀU ĐỐI TƯỢNG-->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+<!--        -->
+        <form th:action="@{/deletenhieu}" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Accept delete transaction</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Do you want to delete ???
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-danger btn-ok" id="delete" value="Delete">
+                    <input type="hidden" id="customerId" name="listId">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function showModal() {
+        let array = document.getElementsByClassName("listId");
+        let listId = [];
+        for (let i = 0; i < array.length; i++) {
+            if (array[i].checked) {
+                listId.push(array[i].value);
+            }
+        }
+        document.getElementById("customerId").value = listId;
+    }
+</script>
+
+<!--    ************************************************-->
+
+
+
+
+
+
+<script src="/jquery/jquery-3.5.1.min.js"></script>
+<script src="/jquery/popper.min.js"></script>
+<script src="/bootstrap4/js/bootstrap.js"></script>
+</div>
+</body>
+</html>
+</body>
+</html>
